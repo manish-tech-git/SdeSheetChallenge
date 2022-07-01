@@ -24,3 +24,14 @@ vector<int> KMostFrequent(int n, int k, vector<int> &arr)
     return v;
    
 }
+
+/*
+
+Time Complexity: O(k log d + d), where d is the count of distinct elements in the array. 
+        To remove the top of priority queue O(log d) time is required, so if k elements are removed then O(k log d) time is required 
+        and to traverse the distinct elements O(d) time is required.
+
+Auxiliary Space: O(d), where d is the count of distinct elements in the array. 
+    To store the elements in HashMap O(d) space complexity is needed.
+
+*/
