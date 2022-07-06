@@ -17,6 +17,8 @@
 
 *****************************************************************/
 
+//Iterative Approach 
+
 LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
 {
     if(head == NULL || head -> next == NULL) return head;
@@ -39,3 +41,37 @@ LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head)
     
     return prev;
  }
+
+
+//Time Complexity - O(N)
+
+
+// Iterative approach
+
+
+void reverse (LinkedListNode<int>* &head,LinkedListNode<int> *curr,LinkedListNode<int> *prev)
+{
+    //Base case
+    if(curr == NULL){
+        head = prev;
+        return;
+    }
+    
+    LinkedListNode<int> *forward = curr -> next;
+    reverse (head, forward, curr);
+    curr -> next = prev;
+}
+
+
+
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
+{
+    LinkedListNode<int>* curr = head;
+    LinkedListNode<int>* prev = NULL;
+    reverse (head, curr, prev);
+    return head;
+    
+    
+}
+
+
