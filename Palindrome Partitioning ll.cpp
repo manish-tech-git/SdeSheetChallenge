@@ -1,3 +1,6 @@
+
+// ************************************************** using Memoization *********************************************************
+
 #include <bits/stdc++.h>
 bool isPalindrome (int i , int j, string str)
 {
@@ -37,3 +40,43 @@ int palindromePartitioning(string str) {
     return solve (0, str.size(), str, dp) - 1;
  
 }
+
+
+
+// ************************************* using Tabulation ********************************************************
+
+#include <bits/stdc++.h>
+bool isPalindrome (int i , int j, string str)
+{
+    while (i < j)
+    {
+        if (str[i] != str[j])  return false;
+            i++;
+            j--;
+           
+    }
+    return true;
+}
+
+int palindromePartitioning(string str) {
+    
+     int n = str.size();
+     vector <int> dp  (n+1, 0);
+    
+    for (int i = n- 1; i >= 0; i--)
+    {
+         int mini = INT_MAX;
+    
+        for (int j = i; j < n; j++){
+            if(isPalindrome(i, j, str)){
+                int cost = 1 + dp[j+1];
+                mini = min (mini, cost);
+        
+            }
+    }
+    dp[i] = mini;
+ 
+    }
+    return dp[0] -1;
+}
+
