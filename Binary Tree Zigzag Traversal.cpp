@@ -55,3 +55,56 @@ vector<int> zigZagTraversal(BinaryTreeNode<int> *root)
     return ans;
     
 }
+
+
+// ********************************************* GFG **********************************************************************
+
+class Solution{
+    public:
+   
+    vector <int> zigZagTraversal(Node* root)
+    {
+    
+        vector <int> ans;
+        if (root == NULL) 
+        return ans;
+        
+        queue <Node*> q;
+        
+        //push root element
+        q.push(root);
+        int flag = 1;
+        while (!q.empty())
+        {
+      
+            vector <int> temp;
+            int size = q.size();
+            
+            while  (size--)
+            {
+                Node* node = q.front();
+                q.pop();
+                temp.push_back (node -> data);
+                
+                
+                if (node -> left){
+                    q.push(node -> left);
+                }
+                if (node -> right){
+                    q.push(node -> right);
+                }
+                
+            }
+            
+            if (flag % 2 == 0) reverse (temp.begin(), temp.end());
+            for (auto it : temp)
+                ans.push_back(it);
+            
+            flag = !flag;
+            
+        }
+    
+    return ans;
+    
+    }
+};
