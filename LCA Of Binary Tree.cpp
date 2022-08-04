@@ -48,3 +48,31 @@ int lowestCommonAncestor(TreeNode<int> *root, int x, int y)
 
 // Time Complexity - O(N)
 // Space Complexity - O(N)
+
+
+
+
+
+Node* lca(Node* root ,int n1 ,int n2 )
+    {
+        
+        if (root == NULL)
+            return NULL;
+            
+        if (root -> data == n1 || root -> data == n2)
+            return root;
+        
+        
+        Node* left = lca (root -> left, n1, n2);
+        Node* right = lca (root -> right, n1, n2);
+        
+        if (left and right)
+            return root;
+            
+        else if(left)
+            return left;
+        
+        else
+            return right;
+
+    }
