@@ -1,4 +1,6 @@
 
+// Selection Sort -> Inplace Sorting ans Unstable Algorithm
+
 #include<bits/stdc++.h>
 void selectionSort(vector<int>& arr, int n)
 {   
