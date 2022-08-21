@@ -8,7 +8,7 @@ void merge(vector < int > & arr, int s, int e) {
     int *first = new int[len1];
     int *second = new int[len2];
 
-    //copy values
+    //copy values from main array
     int mainArrayIndex = s;
     for(int i=0; i<len1; i++) 
     {
@@ -21,7 +21,7 @@ void merge(vector < int > & arr, int s, int e) {
         second[i] = arr[mainArrayIndex++];
     }
 
-    //merge 2 sorted arrays     
+    //merge 2 sorted arrays to main array   
     int index1 = 0;
     int index2 = 0;
     mainArrayIndex = s;
@@ -44,6 +44,7 @@ void merge(vector < int > & arr, int s, int e) {
         arr[mainArrayIndex++] = second[index2++];
     }
 
+    //delete temporary arrays
     delete []first;
     delete []second;
 
@@ -71,6 +72,8 @@ void solve(vector < int > & arr, int s, int e) {
 void mergeSort(vector < int > & arr, int n) {
     // Write your code here.
     solve(arr, 0, n-1);
-    
-    
+        
 }
+
+// Time Complexity -> O(NlogN)
+// Space Complexity -> O(N)
