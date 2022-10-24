@@ -33,3 +33,38 @@ int lengthOfLongestConsecutiveSequence(vector<int> &arr, int n) {
 
 
 // Optimised Approach
+
+int longestConsecutive(vector<int>& nums) {
+        
+        
+        int longestStreak = 0;
+
+        set <int> st;
+    
+        for (auto it : nums){
+            st.insert(it);
+        }
+    
+        
+    for (auto num : nums){
+        if(!st.count(num-1)){
+            int currentNum = num;
+            int currentStreak = 1;
+            
+            while (st.count(currentNum+1)){
+                currentNum += 1;
+                currentStreak += 1;
+            }
+            
+            longestStreak = max (longestStreak, currentStreak);
+        }
+    }
+    
+    return longestStreak;
+    
+        
+}
+    
+// Time Complexity -> O(N)
+// Space Complexity -> O(N)
+
